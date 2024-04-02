@@ -7,6 +7,7 @@ import UserSignupForm from "../../../Components/User/UserSignupComponents/userSi
 import OrphanageSignupForm from "../../../Components/User/UserSignupComponents/orphanageSignupForm";
 import OrganizationSignupForm from "../../../Components/User/UserSignupComponents/organizationSignupForm";
 import "./userSignup.css";
+import InstituteSignupForm from "../../../Components/User/UserSignupComponents/instituteSignupForm";
 const UserSignup = () => {
   const [activeUser, setActiveUser] = useState("user");
   const handleUserChange = (event) => {
@@ -32,12 +33,14 @@ const UserSignup = () => {
               <option value="user">User</option>
               <option value="orphanage">Orphanage</option>
               <option value="organization">Organization</option>
+              <option value="institute">Institute</option>
             </Form.Select>
 
             <div className="users-signup-form-components">
               {activeUser === "user" && <UserSignupForm />}
               {activeUser === "orphanage" && <OrphanageSignupForm />}
               {activeUser === "organization" && <OrganizationSignupForm />}
+              {activeUser === "institute" && <InstituteSignupForm />}
             </div>
           </div>
         </div>

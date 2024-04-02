@@ -3,18 +3,18 @@ import { Button, Form } from "react-bootstrap";
 import axiosInstance from "../../../api/BaseUrl.js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./signupForm.css";
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import axiosMultipartInstance from "../../../api/axiosMultipartInstance.js";
 import { validatePincode } from "../../../utils/pincodeValidation.js";
-const OrphanageSignupForm = () => {
-  const [orphanageData, setOrphanageData] = useState({
+import "./signupForm.css";
+const InstituteSignupForm = () => {
+  const [instituteData, setInstituteData] = useState({
     name: "",
     yearOfEstablishment: "",
     email: "",
     password: "",
-    purpose: "",
+    type: "",
     address: "",
     city: "",
     state: "Kerala",
@@ -31,10 +31,10 @@ const OrphanageSignupForm = () => {
 
   // form validation
   const handleChange = (e) => {
-    setOrphanageData({ ...orphanageData, [e.target.name]: e.target.value });
+    setInstituteData({ ...instituteData, [e.target.name]: e.target.value });
   };
   const handleFilechange = (e) => {
-    setOrphanageData({ ...orphanageData, img: e.target.files[0] });
+    setInstituteData({ ...instituteData, img: e.target.files[0] });
   };
   const handleCheckboxChange = (e) => {
     setAgreedToTerms(e.target.checked);
@@ -58,18 +58,18 @@ const OrphanageSignupForm = () => {
     }
     setValidated(true);
     if (
-      !orphanageData.name ||
-      !orphanageData.yearOfEstablishment ||
-      !orphanageData.email ||
-      !orphanageData.password ||
-      !orphanageData.purpose ||
-      !orphanageData.address ||
-      !orphanageData.city ||
-      !orphanageData.state ||
-      !orphanageData.pincode ||
-      !orphanageData.phoneNumber ||
-      !orphanageData.description ||
-      !orphanageData.license
+      !instituteData.name ||
+      !instituteData.yearOfEstablishment ||
+      !instituteData.email ||
+      !instituteData.password ||
+      !instituteData.type ||
+      !instituteData.address ||
+      !instituteData.city ||
+      !instituteData.state ||
+      !instituteData.pincode ||
+      !instituteData.phoneNumber ||
+      !instituteData.description ||
+      !instituteData.license
     ) {
       console.log("Please fill all the fields");
       return;
@@ -79,42 +79,42 @@ const OrphanageSignupForm = () => {
         alert("Please agree to the terms and conditions");
         return;
       }
-      if (orphanageData.phoneNumber.length !== 10) {
+      if (instituteData.phoneNumber.length !== 10) {
         console.log("Phone number must be 10 digits");
         return;
       }
       let phoneNumberReg = /^[0-9]{10}$/;
-      if (!phoneNumberReg.test(orphanageData.phoneNumber)) {
+      if (!phoneNumberReg.test(instituteData.phoneNumber)) {
         alert("Phone number must be 10 digits");
         return;
       }
-      if (!isValidEmail(orphanageData.email)) {
-        alert ("Invalid Email id")
+      if (!isValidEmail(instituteData.email)) {
+        alert("Invalid Email id");
         console.log("Invalid email");
         return;
       }
 
-      if (!validatePincode(orphanageData.pincode)) {
+      if (!validatePincode(instituteData.pincode)) {
         alert("Please provide a valid pincode (Trivandrum only)");
         return;
       }
 
-      if (!isValidLicsense(orphanageData.license)) {
+      if (!isValidLicsense(instituteData.license)) {
         console.log("Invalid license number");
         alert("Invalid license number");
         return;
       }
-      sendDataToServer(orphanageData);
+      sendDataToServer(instituteData);
     }
   };
   const sendDataToServer = async (data) => {
     try {
       const response = await axiosMultipartInstance.post(
-        "/orphanage/signup",
+        "/institute/signup",
         data
       );
       if (response.status === 201) {
-        console.log("orphange registratio successful");
+        console.log("Institute registration successful");
         alert("Registration successful.");
         setTimeout(() => {
           navigate("/user/login");
@@ -141,13 +141,13 @@ const OrphanageSignupForm = () => {
           <Form.Control
             required
             type="text"
-            placeholder="Orphanage Name"
+            placeholder="Institute Name"
             name="name"
             onChange={handleChange}
-            value={orphanageData.name}
+            value={instituteData.name}
           />
           <Form.Control.Feedback type="invalid">
-            Please enter your orphanage name
+            Please enter your Institute name
           </Form.Control.Feedback>
         </Form.Group>
 
@@ -158,7 +158,7 @@ const OrphanageSignupForm = () => {
             required
             name="yearOfEstablishment"
             onChange={handleChange}
-            value={orphanageData.yearOfEstablishment}
+            value={instituteData.yearOfEstablishment}
           />
           <Form.Control.Feedback type="invalid">
             Please Enter your established year
@@ -174,7 +174,7 @@ const OrphanageSignupForm = () => {
             placeholder="Email"
             name="email"
             onChange={handleChange}
-            value={orphanageData.email}
+            value={instituteData.email}
           />
           <Form.Control.Feedback type="invalid">
             Please Enter valid email.
@@ -204,7 +204,7 @@ const OrphanageSignupForm = () => {
             name="password"
             className="password-input-eye-btn-hide"
             onChange={handleChange}
-            value={orphanageData.password}
+            value={instituteData.password}
           />
           <Form.Control.Feedback type="invalid">
             Please Enter atleast 8 characters.
@@ -220,17 +220,19 @@ const OrphanageSignupForm = () => {
             required
             as="select"
             type="select"
-            name="purpose"
+            name="type"
             onChange={handleChange}
-            value={orphanageData.purpose}
+            value={instituteData.type}
           >
-            <option value="">Purpose of your orphanage</option>
-            <option value="Children Education">Children Education</option>
-            <option value="Old Age Home">Old Age Home</option>
+            <option value="">Institute Type</option>
+            <option value="Anganwadis">Anganwadis</option>
+            <option value="Schools">Schools</option>
+            <option value="College">College</option>
+            <option value="Traning centers">Traning centers</option>
             <option value="Other">Other</option>
           </Form.Control>
           <Form.Control.Feedback type="invalid">
-            Please select purpose of the orphanage.
+            Please select type of the Institute.
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group>
@@ -241,7 +243,7 @@ const OrphanageSignupForm = () => {
             name="phoneNumber"
             minLength={10}
             onChange={handleChange}
-            value={orphanageData.phoneNumber}
+            value={instituteData.phoneNumber}
             pattern="[0-9]{10}"
             maxLength={10}
           />
@@ -258,7 +260,7 @@ const OrphanageSignupForm = () => {
             required
             name="address"
             onChange={handleChange}
-            value={orphanageData.address}
+            value={instituteData.address}
           />
           <Form.Control.Feedback type="invalid">
             Please provide a your address.
@@ -271,7 +273,7 @@ const OrphanageSignupForm = () => {
             required
             name="city"
             onChange={handleChange}
-            value={orphanageData.city}
+            value={instituteData.city}
           />
           <Form.Control.Feedback type="invalid">
             Please provide your city name.
@@ -283,17 +285,17 @@ const OrphanageSignupForm = () => {
         <Form.Group>
           <Form.Control
             type="text"
-            placeholder="Orphanage License No."
+            placeholder="Institute License No."
             required
             name="license"
             onChange={handleChange}
-            value={orphanageData.license}
+            value={instituteData.license}
             minLength={10}
             maxLength={10}
             pattern="[0-9]{10}"
           />
           <Form.Control.Feedback type="invalid">
-            Please provide 10 digit orphanage license number.
+            Please provide 10 digit Institute license number.
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group>
@@ -303,7 +305,7 @@ const OrphanageSignupForm = () => {
             required
             name="pincode"
             onChange={handleChange}
-            value={orphanageData.pincode}
+            value={instituteData.pincode}
           />
           <Form.Control.Feedback type="invalid">
             Please provide your pincode.
@@ -315,19 +317,19 @@ const OrphanageSignupForm = () => {
         <Form.Control
           required
           as="textarea"
-          placeholder="Tell us about your orphanage"
+          placeholder="Tell us about your Institute"
           rows={3}
           name="description"
           onChange={handleChange}
-          value={orphanageData.description}
+          value={instituteData.description}
         />
         <Form.Control.Feedback type="invalid">
-          Please tell us about your orphanage.
+          Please tell us about your Institute.
         </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group className="position-relative mt-3">
-        <Form.Label>Upload Orphanage Photos (Square image)</Form.Label>
+        <Form.Label>Upload Institute Photos (Square image)</Form.Label>
         <Form.Control
           accept="image/*"
           onChange={handleFilechange}
@@ -365,4 +367,4 @@ const OrphanageSignupForm = () => {
     </Form>
   );
 };
-export default OrphanageSignupForm;
+export default InstituteSignupForm;
