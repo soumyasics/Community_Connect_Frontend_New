@@ -7,6 +7,7 @@ import "./signupForm.css";
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import axiosMultipartInstance from "../../../api/axiosMultipartInstance.js";
+import { validatePincode } from "../../../utils/pincodeValidation.js";
 const OrphanageSignupForm = () => {
   const [orphanageData, setOrphanageData] = useState({
     name: "",
@@ -90,6 +91,11 @@ const OrphanageSignupForm = () => {
       if (!isValidEmail(orphanageData.email)) {
         alert ("Invalid Email id")
         console.log("Invalid email");
+        return;
+      }
+
+      if (!validatePincode(orphanageData.pincode)) {
+        alert("Please provide a valid pincode (Trivandrum only)");
         return;
       }
 

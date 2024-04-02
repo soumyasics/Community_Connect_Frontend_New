@@ -5,6 +5,7 @@ import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import axiosMultipartInstance from "../../../api/axiosMultipartInstance";
 import "./signupForm.css";
+import { validatePincode } from "../../../utils/pincodeValidation";
 const OrganizationSignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [orgData, setOrgData] = useState({
@@ -89,6 +90,10 @@ const OrganizationSignupForm = () => {
 
       if (!isValidCin(orgData.license)) {
         console.log("Invalid CIN", orgData.license);
+        return;
+      }
+      if (!validatePincode(orgData.pincode)) {
+        alert("Please provide a valid pincode (Trivandrum only)");
         return;
       }
       sendDataToServer(orgData);
