@@ -14,8 +14,6 @@ import LoginModalTest from "./Components/Common/LoginModal/loginModal";
 import LeaderBoard from "./Pages/Leaderboard/leaderboard";
 import UserProfile from "./Pages/Users/Profile/userProfile";
 import TermsConditions from "./Components/Common/OrphanageDetails/terms-conditions/terms";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
 import BloodCamp from "./Pages/BloodCamp/bloodCamp";
 import ViewBloodCamps from "./Pages/BloodCamp/viewBloodCamp";
 import ViewRequests from "./Pages/Orphanages/ViewRequests/viewRequests";
@@ -23,6 +21,10 @@ import UserProfile2 from "./Pages/Users/Profile/userProfile2";
 import NewUserProfile from "./Pages/Users/newProfile/newUserProfile";
 import OrphangeProfile from "./Pages/Users/orpProfile/newUserProfile";
 import OrganizationProfile from "./Pages/Users/newProfile2/newUserProfile";
+import InstituteHome from "./Pages/institutes/InstituteHome/instituteHome";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import InstituteProfile from "./Pages/Users/insProfile/newUserProfile";
 function App() {
   return (
     <BrowserRouter basename="community_connect_tvm">
@@ -67,6 +69,12 @@ function App() {
         <Route path="/view-blood-camps" element={<ViewBloodCamps />} />
         <Route path="/orphanage/orphanage/:id" element={<OrphanageDetails />} />
         {/* organizations  */}
+
+      {/* institute routes  */}
+        
+        <Route path="/institute" element={<InstituteHome />} />
+        <Route path="/institute/profile" element={<InstituteProfile />} />
+
 
         {/* orphnaage routes  */}
         <Route path="/orphanage" element={<OrphanageHome />} />

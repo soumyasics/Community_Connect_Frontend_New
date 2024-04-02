@@ -6,8 +6,8 @@ import AuthContext from "../../../Context/authContext";
 import { CgProfile } from "react-icons/cg";
 import LoginModal from "../../Common/LoginModal/loginModal";
 import BASE_URL from "../../../api/Backend-url";
-import "./orphanageNavbar.css";
-const OrphanageNavbar = () => {
+import "./instituteNavbar.css";
+const InstituteNavbar = () => {
   const { logoutUserContext, userContext, loginUserContext } =
     useContext(AuthContext);
   const [orpProfilePic, setOrpProfilePic] = useState(null);
@@ -29,9 +29,9 @@ const OrphanageNavbar = () => {
   }, [userContext]);
 
   useEffect(() => {
-    const orpData = JSON.parse(localStorage.getItem("orphanage-data")) || null;
-    if (orpData) {
-      loginUserContext("orphanage", orpData);
+    const insData = JSON.parse(localStorage.getItem("institute-data")) || null;
+    if (insData) {
+      loginUserContext("institute", insData);
     }
   }, []);
 
@@ -40,41 +40,26 @@ const OrphanageNavbar = () => {
   };
 
   const navigateHome = () => {
-    navigate("/orphanage");
-  };
-
-  const handleLogout = () => {
-    if (localStorage.getItem("user-data")) {
-      localStorage.removeItem("user-data");
-    }
-    if (localStorage.getItem("orphanage-data")) {
-      localStorage.removeItem("orphanage-data");
-    }
-    if (localStorage.getItem("organization-data")) {
-      localStorage.removeItem("organization-data");
-    }
-
-    logoutUserContext();
-    navigate("/user/login");
+    navigate("/institute");
   };
 
   const handleRedirectOrpList = () => {
     if (userContext && userContext.userType) {
-      navigate("/orphanage/orphanages-list");
+      // navigate("/orphanage/orphanages-list");
     } else {
       setLoginModalShow(true);
     }
   };
   const handleRedirectRequest = () => {
     if (userContext && userContext.userType) {
-      navigate("/orphanage/donation-request");
+      // navigate("/orphanage/donation-request");
     } else {
       setLoginModalShow(true);
     }
   };
   const redirectProfile = () => {
-    if (userContext && userContext.userType === "orphanage") {
-      navigate("/orphanage/profile");
+    if (userContext && userContext.userType === "institute") {
+      navigate("/institute/profile");
     } else {
       setLoginModalShow(true);
     }
@@ -82,7 +67,7 @@ const OrphanageNavbar = () => {
 
   const redirectView = () => {
     if (userContext && userContext.userType) {
-      navigate("../orphanage/view-requests");
+      // navigate("../orphanage/view-requests");
     } else {
       setLoginModalShow(true);
     }
@@ -93,7 +78,7 @@ const OrphanageNavbar = () => {
         <div
           className="user-navbar-left"
           onClick={() => {
-            navigate("/orphanage");
+            navigate("/institute");
           }}
         >
           <p style={{ cursor: "pointer" }} onClick={navigateHome}>
@@ -102,12 +87,12 @@ const OrphanageNavbar = () => {
           </p>
         </div>
         <div className="user-navbar-center">
-          <Link to="/orphanage">Home</Link>
+          <Link to="/institute">Home</Link>
           <button
             className="border-0 text-light bg-transparent"
             onClick={handleRedirectOrpList}
           >
-            Orphanages
+            Institutes
           </button>
           <button
             className="border-0 text-light bg-transparent"
@@ -158,4 +143,4 @@ const OrphanageNavbar = () => {
     </>
   );
 };
-export default OrphanageNavbar;
+export default InstituteNavbar;
