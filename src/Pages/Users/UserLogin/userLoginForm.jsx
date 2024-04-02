@@ -32,6 +32,9 @@ const UserLoginForm = ({ user }) => {
     if (localStorage.getItem("organization-data")) {
       localStorage.removeItem("organization-data");
     }
+    if (localStorage.getItem("institute-data")) {
+      localStorage.removeItem("institute-data");
+    }
   };
 
   function isValidEmail(email) {
@@ -65,7 +68,12 @@ const UserLoginForm = ({ user }) => {
   };
 
   const sendDataToServer = async (email, password) => {
-    if (user === "user" || user === "orphanage" || user === "organization") {
+    if (
+      user === "user" ||
+      user === "orphanage" ||
+      user === "organization" ||
+      user === "institute"
+    ) {
       try {
         const res = await axiosInstance.post(`/${user}/login`, {
           email,
@@ -92,6 +100,23 @@ const UserLoginForm = ({ user }) => {
               console.log(
                 "Orphanage data is not saved in local storage",
                 orpDataFromServer
+              );
+            }
+          } else if (user === "institute") {
+            const instituteDataFromServer = res?.data?.data;
+            if (instituteDataFromServer) {
+              if (instituteDataFromServer.password) {
+                delete instituteDataFromServer.password;
+              }
+              loginUserContext("institute", instituteDataFromServer);
+              localStorage.setItem(
+                "institute-data",
+                JSON.stringify(instituteDataFromServer)
+              );
+            } else {
+              console.log(
+                "Institute data is not saved in local storage",
+                instituteDataFromServer
               );
             }
           } else if (user === "user") {
@@ -135,6 +160,8 @@ const UserLoginForm = ({ user }) => {
           setTimeout(() => {
             if (user === "orphanage") {
               navigate("/orphanage");
+            } else if (user === "institute") {
+              navigate("/institute");
             } else if (user === "user") {
               navigate("/");
             } else if (user === "organization") {

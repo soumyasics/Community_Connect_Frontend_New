@@ -46,12 +46,21 @@ const UserLogin = () => {
           >
             Orphanage
           </button>
+          <button
+            className={`${activeUser === "institute" && "active"}`}
+            onClick={() => setActiveUser("institute")}
+          >
+            Institute
+          </button>
         </Container>
         <div>
           {activeUser === "user" && <UserLoginForm user={"user"} />}
           {activeUser === "orphanage" && <UserLoginForm user={"orphanage"} />}
           {activeUser === "organization" && (
             <UserLoginForm user={"organization"} />
+          )}
+          {activeUser === "institute" && (
+            <UserLoginForm user={"institute"} />
           )}
         </div>
       </Container>
