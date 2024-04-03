@@ -7,9 +7,7 @@ const AuthProvider = ({ children }) => {
     userData: null,
   });
 
-  useEffect(() => {
-    console.log("userContext", userContext);
-  }, [userContext]);
+  useEffect(() => {}, [userContext]);
   const loginUserContext = (userType, userData) => {
     setUserContext({
       userType,

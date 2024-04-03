@@ -97,7 +97,7 @@ const InsRequestForm = ({ insData }) => {
       if (response.status === 201) {
         alert("Request successful.");
         setTimeout(() => {
-          // navigate("/orphanage/view-requests");
+          navigate("/institute/view-requests");
         }, 1500);
       }
     } catch (error) {

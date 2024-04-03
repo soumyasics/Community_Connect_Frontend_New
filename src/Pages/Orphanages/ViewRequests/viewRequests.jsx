@@ -32,9 +32,7 @@ const ViewRequests = () => {
       console.log("error on get donation request", error);
     }
   }
-  useEffect(() => {
-    console.log("aa", allReqs);
-  }, [allReqs]);
+
   return (
     <div>
       <div
@@ -52,7 +50,7 @@ const ViewRequests = () => {
             No donation requests
           </h1>
         ) : (
-          <>
+          <div className="mt-5" style={{ position: "relative", top: "30px" }}>
             <h1 className="text-center mt-5"> Donation request status</h1>
             <Table
               style={{ width: "90%" }}
@@ -89,10 +87,10 @@ const ViewRequests = () => {
                 })}
               </tbody>
             </Table>
-          </>
+          </div>
         )}
       </div>
-      <div className="mt-5 w-100" style={{ position: "absolute", bottom: "0" }}>
+      <div className="mt-5 w-100">
         <UserFooter />
       </div>
     </div>

@@ -67,7 +67,7 @@ const InstituteNavbar = () => {
 
   const redirectView = () => {
     if (userContext && userContext.userType) {
-      // navigate("../orphanage/view-requests");
+      navigate("/institute/view-requests");
     } else {
       setLoginModalShow(true);
     }

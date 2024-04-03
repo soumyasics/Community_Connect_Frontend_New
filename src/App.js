@@ -28,6 +28,8 @@ import InstituteProfile from "./Pages/Users/insProfile/newUserProfile";
 import UserInstitutesList from "./Pages/Orphanages/UserInstituteList/userInstituteList";
 import InsRequestForm from "./Components/Institutes/InstituteRequestForm/instituteRequestForm";
 import InsCreateDonationRequest from "./Pages/institutes/CreateDonationRequest/createDonationRequest";
+import InsViewRequests from "./Pages/institutes/ViewRequests/viewRequests";
+import ViewInsDonationRequest from "./Components/User/InsDonationRequest/insDonationRequest";
 function App() {
   return (
     <BrowserRouter basename="community_connect_tvm">
@@ -52,10 +54,17 @@ function App() {
           element={<DonationReqDetails />}
         />
         <Route
+          path="/user/institute/request"
+          element={<ViewInsDonationRequest />}
+        />
+        <Route
+          path="/user/institute/request/:id"
+          element={<DonationReqDetails />}
+        />
+        <Route
           path="/user/leaderboard"
           element={<LeaderBoard activeUser="user" />}
         />
-        {/* <Route path="/profile" element={<UserProfile activeUser="user" />} /> */}
         <Route
           path="/user/profile"
           element={<NewUserProfile activeUser="user" />}
@@ -82,6 +91,7 @@ function App() {
           path="/institute/donation-request"
           element={<InsCreateDonationRequest />}
         />
+        <Route path="/institute/view-requests" element={<InsViewRequests />} />
 
         {/* orphnaage routes  */}
         <Route path="/orphanage" element={<OrphanageHome />} />

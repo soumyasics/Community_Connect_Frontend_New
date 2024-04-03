@@ -28,7 +28,9 @@ const CreateDonationRequest = () => {
           <h1>Please login</h1>
         </Container>
       )}
-      <div className="mt-5 w-100" style={{ position: "absolute", bottom: "0" }}>
+      <br />
+      <br />
+      <div className="mt-5 w-100">
         <UserFooter />
       </div>
     </>

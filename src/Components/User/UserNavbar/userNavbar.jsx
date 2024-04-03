@@ -93,6 +93,13 @@ const UserNavbar = () => {
       setLoginModalShow(true);
     }
   };
+  const handleRedirectInsReq = () => {
+    if (userContext && userContext.userType) {
+      navigate("../user/institute/request");
+    } else {
+      setLoginModalShow(true);
+    }
+  };
   const redirectProfile = () => {
     if (userContext && userContext.userType == "user") {
       navigate("../user/profile");
@@ -110,7 +117,7 @@ const UserNavbar = () => {
             COMMUNITY CONNECT
           </p>
         </div>
-        <div className="user-navbar-center">
+        <div className="user-navbar-center" style={{ width: "40rem" }}>
           <Link to="/">Home</Link>
           <Link to="/user/leaderboard">Leaderboard</Link>
           {userContext.userType === "organization" && (
@@ -127,13 +134,20 @@ const UserNavbar = () => {
           </button>
           <button
             className="border-0 text-light bg-transparent"
+            onClick={handleRedirectRequest}
+          >
+            Charity
+          </button>
+          <button
+            className="border-0 text-light bg-transparent"
             onClick={redirectInstitute}
           >
             Institutes
           </button>
+
           <button
             className="border-0 text-light bg-transparent"
-            onClick={handleRedirectRequest}
+            onClick={handleRedirectInsReq}
           >
             Donate
           </button>
@@ -157,7 +171,10 @@ const UserNavbar = () => {
                   {username}
                 </div>
               ) : (
-                <button style={{ color: "white", backgroundColor: "#2b0637" }} onClick={redirectProfile}>
+                <button
+                  style={{ color: "white", backgroundColor: "#2b0637" }}
+                  onClick={redirectProfile}
+                >
                   {" "}
                   <CgProfile /> {username}
                 </button>
