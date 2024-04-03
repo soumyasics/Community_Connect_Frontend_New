@@ -79,6 +79,13 @@ const UserNavbar = () => {
       setLoginModalShow(true);
     }
   };
+  const redirectInstitute = () => {
+    if (userContext && userContext.userType) {
+      navigate("/user/institute-list");
+    } else {
+      setLoginModalShow(true);
+    }
+  };
   const handleRedirectRequest = () => {
     if (userContext && userContext.userType) {
       navigate("/user/orphanage/request");
@@ -117,6 +124,12 @@ const UserNavbar = () => {
             onClick={handleRedirectOrpList}
           >
             Orphanages
+          </button>
+          <button
+            className="border-0 text-light bg-transparent"
+            onClick={redirectInstitute}
+          >
+            Institutes
           </button>
           <button
             className="border-0 text-light bg-transparent"

@@ -1,38 +1,39 @@
 import { useEffect, useState } from "react";
 import UserFooter from "../../../Components/Common/UserFooter/userFooter";
-import OrphanageNavbar from "../../../Components/Orphanage/OrphanageNavbar/orphanageNavbar";
-import OrphanageRequestForm from "../../../Components/Orphanage/OrphanageRequestForm/orphanageRequestForm";
 import { Container } from "react-bootstrap";
+import InstituteNavbar from "../../../Components/Institutes/InstitutesNavbar/instituteNavbar";
+import InsRequestForm from "../../../Components/Institutes/InstituteRequestForm/instituteRequestForm";
 import "./createDonationRequest.css";
-
-const CreateDonationRequest = () => {
-  const [orpData, setOrpData] = useState(null);
+const InsCreateDonationRequest = () => {
+  const [insData, setInsData] = useState(null);
   useEffect(() => {
-    let orpData = localStorage.getItem("orphanage-data") || null;
-    if (orpData) {
-      orpData = JSON.parse(orpData);
-      setOrpData(orpData);
+    let insData = localStorage.getItem("institute-data") || null;
+    if (insData) {
+      insData = JSON.parse(insData);
+      setInsData(insData);
     } else {
-      console.log("Orp data not found in local storage");
+      console.log("Institute data not found in local storage");
       console.log("Please login");
     }
   }, []);
   return (
     <>
-      <OrphanageNavbar />
+      <InstituteNavbar />
       <br />
-      {orpData ? (
-        <OrphanageRequestForm orpData={orpData} />
+      {insData ? (
+        <InsRequestForm insData={insData} />
       ) : (
         <Container style={{ minHeight: "400px" }} fluid className="mt-5 p-0">
           <h1>Please login</h1>
         </Container>
       )}
-      <div className="mt-5 w-100" style={{ position: "absolute", bottom: "0" }}>
+
+      <div className="mt-5 w-100" style={{ height: "50px" }}></div>
+      <div className="mt-5 w-100">
         <UserFooter />
       </div>
     </>
   );
 };
 
-export default CreateDonationRequest;
+export default InsCreateDonationRequest;

@@ -52,7 +52,7 @@ const InstituteNavbar = () => {
   };
   const handleRedirectRequest = () => {
     if (userContext && userContext.userType) {
-      // navigate("/orphanage/donation-request");
+      navigate("/institute/donation-request");
     } else {
       setLoginModalShow(true);
     }
@@ -88,12 +88,12 @@ const InstituteNavbar = () => {
         </div>
         <div className="user-navbar-center">
           <Link to="/institute">Home</Link>
-          <button
+          {/* <button
             className="border-0 text-light bg-transparent"
             onClick={handleRedirectOrpList}
           >
             Institutes
-          </button>
+          </button> */}
           <button
             className="border-0 text-light bg-transparent"
             onClick={handleRedirectRequest}

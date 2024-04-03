@@ -1,14 +1,13 @@
-import "./orphanageRequestForm.css";
 import { useState, useEffect } from "react";
 import { Button, Form, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import axiosMultipartInstance from "../../../api/axiosMultipartInstance";
 import axiosInstance from "../../../api/BaseUrl";
-import { AiOutlineConsoleSql } from "react-icons/ai";
-const OrphanageRequestForm = ({ orpData }) => {
+import "./instituteRequestForm.css";
+
+const InsRequestForm = ({ insData }) => {
   const navigate = useNavigate();
   const [donationReqData, setDonationReqData] = useState({
-    orphanageId: "",
+    insId: "",
     title: "",
     targetAmount: "",
     bankAcNumber: "",
@@ -22,10 +21,10 @@ const OrphanageRequestForm = ({ orpData }) => {
 
   const [validated, setValidated] = useState(false);
   useEffect(() => {
-    if (orpData) {
-      setDonationReqData({ ...donationReqData, orphanageId: orpData._id });
+    if (insData) {
+      setDonationReqData({ ...donationReqData, insId: insData._id });
     }
-  }, [orpData]);
+  }, [insData]);
   const handleChange = (e) => {
     setDonationReqData({ ...donationReqData, [e.target.name]: e.target.value });
   };
@@ -39,7 +38,7 @@ const OrphanageRequestForm = ({ orpData }) => {
     }
     setValidated(true);
     if (
-      !donationReqData.orphanageId ||
+      !donationReqData.insId ||
       !donationReqData.title ||
       !donationReqData.targetAmount ||
       !donationReqData.bankAcNumber ||
@@ -91,14 +90,14 @@ const OrphanageRequestForm = ({ orpData }) => {
   const sendDataToServer = async (data) => {
     try {
       const response = await axiosInstance.post(
-        "donation-request/create-donation-request",
+        "ins-donation-request/create-donation-request",
         data
       );
 
       if (response.status === 201) {
         alert("Request successful.");
         setTimeout(() => {
-          navigate("/orphanage/view-requests");
+          // navigate("/orphanage/view-requests");
         }, 1500);
       }
     } catch (error) {
@@ -273,4 +272,4 @@ const OrphanageRequestForm = ({ orpData }) => {
     </div>
   );
 };
-export default OrphanageRequestForm;
+export default InsRequestForm;

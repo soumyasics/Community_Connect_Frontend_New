@@ -25,6 +25,9 @@ import InstituteHome from "./Pages/institutes/InstituteHome/instituteHome";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import InstituteProfile from "./Pages/Users/insProfile/newUserProfile";
+import UserInstitutesList from "./Pages/Orphanages/UserInstituteList/userInstituteList";
+import InsRequestForm from "./Components/Institutes/InstituteRequestForm/instituteRequestForm";
+import InsCreateDonationRequest from "./Pages/institutes/CreateDonationRequest/createDonationRequest";
 function App() {
   return (
     <BrowserRouter basename="community_connect_tvm">
@@ -37,6 +40,7 @@ function App() {
           path="/user/orphanages-list"
           element={<UserOrphanagesList activeUser="user" />}
         />
+        <Route path="/user/institute-list" element={<UserInstitutesList />} />
         <Route path="/user/orphanage/:id" element={<OrphanageDetails />} />
 
         <Route
@@ -70,11 +74,14 @@ function App() {
         <Route path="/orphanage/orphanage/:id" element={<OrphanageDetails />} />
         {/* organizations  */}
 
-      {/* institute routes  */}
-        
+        {/* institute routes  */}
+
         <Route path="/institute" element={<InstituteHome />} />
         <Route path="/institute/profile" element={<InstituteProfile />} />
-
+        <Route
+          path="/institute/donation-request"
+          element={<InsCreateDonationRequest />}
+        />
 
         {/* orphnaage routes  */}
         <Route path="/orphanage" element={<OrphanageHome />} />
@@ -88,6 +95,7 @@ function App() {
           path="/orphanage/donation-request"
           element={<CreateDonationRequest />}
         />
+
         <Route path="/orphanage/view-requests" element={<ViewRequests />} />
         <Route
           path="/orphanage/leaderboard"
