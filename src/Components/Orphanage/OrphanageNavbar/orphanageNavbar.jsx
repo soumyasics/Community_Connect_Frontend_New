@@ -122,7 +122,10 @@ const OrphanageNavbar = () => {
             View
           </button>
         </div>
-        <div className="user-navbar-right">
+        <div
+          
+          className="user-navbar-right"
+        >
           {userContext?.userType ? (
             <div>
               {orpProfilePic ? (

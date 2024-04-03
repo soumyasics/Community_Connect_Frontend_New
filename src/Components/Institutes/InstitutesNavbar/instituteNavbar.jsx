@@ -125,7 +125,10 @@ const InstituteNavbar = () => {
                   {orpName}
                 </div>
               ) : (
-                <button onClick={redirectProfile}>
+                <button
+                  style={{ color: "white", backgroundColor: "#2b0637" }}
+                  onClick={redirectProfile}
+                >
                   {" "}
                   <CgProfile /> {orpName}{" "}
                 </button>
