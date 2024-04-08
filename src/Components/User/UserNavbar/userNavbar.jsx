@@ -5,8 +5,9 @@ import AuthContext from "../../../Context/authContext";
 import { useContext, useState, useEffect } from "react";
 import { CgProfile } from "react-icons/cg";
 import LoginModal from "../../Common/LoginModal/loginModal";
-import "./userNavbar.css";
 import BASE_URL from "../../../api/Backend-url";
+import ccLogo from "../../../Assets/Images/cc-logo.jpg";
+import "./userNavbar.css";
 
 const UserNavbar = () => {
   const [loginModalShow, setLoginModalShow] = useState(false);
@@ -111,8 +112,16 @@ const UserNavbar = () => {
   return (
     <>
       <Container fluid className="user-navbar-container">
-        <div className="user-navbar-left">
-          <p style={{ cursor: "pointer" }} onClick={() => navigate("/")}>
+        <div
+          className="user-navbar-left d-flex justify-content-start align-items-center"
+          onClick={() => navigate("/")}
+        >
+          <img
+            src={ccLogo}
+            alt="cc-logo"
+            style={{ width: "50px", borderRadius: "50%" }}
+          />
+          <p className="ml-4" style={{ cursor: "pointer" }}>
             {" "}
             COMMUNITY CONNECT
           </p>

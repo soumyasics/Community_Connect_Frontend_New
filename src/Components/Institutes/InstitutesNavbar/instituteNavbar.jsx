@@ -6,6 +6,7 @@ import AuthContext from "../../../Context/authContext";
 import { CgProfile } from "react-icons/cg";
 import LoginModal from "../../Common/LoginModal/loginModal";
 import BASE_URL from "../../../api/Backend-url";
+import ccLogo from "../../../Assets/Images/cc-logo.jpg";
 import "./instituteNavbar.css";
 const InstituteNavbar = () => {
   const { logoutUserContext, userContext, loginUserContext } =
@@ -75,17 +76,23 @@ const InstituteNavbar = () => {
   return (
     <>
       <Container fluid className="user-navbar-container">
+        
+
         <div
-          className="user-navbar-left"
-          onClick={() => {
-            navigate("/institute");
-          }}
+          className="user-navbar-left d-flex justify-content-start align-items-center"
+          onClick={() => navigate("/institute")}
         >
-          <p style={{ cursor: "pointer" }} onClick={navigateHome}>
+          <img
+            src={ccLogo}
+            alt="cc-logo"
+            style={{ width: "50px", borderRadius: "50%" }}
+          />
+          <p className="ml-4" style={{ cursor: "pointer" }}>
             {" "}
             COMMUNITY CONNECT
           </p>
         </div>
+
         <div className="user-navbar-center">
           <Link to="/institute">Home</Link>
           {/* <button

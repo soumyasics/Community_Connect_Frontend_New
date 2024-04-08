@@ -19,11 +19,11 @@ const Footer = () => {
       <div>
         <Stack>
           <h4 className="footer-logo"> Community Connect </h4>
-          <InputGroup className="footer-mail">
+          <InputGroup style={{width: "240px"}} className="footer-mail">
             <InputGroup.Text>
               <AiOutlineMail />
             </InputGroup.Text>
-            <Form.Control type="text" placeholder="Enter Your Email" />
+            <Form.Control  type="text" placeholder="Enter Your Email" />
           </InputGroup>
           <div className="socialmedia-icons">
             <FaSquareInstagram style={iconStyle} />

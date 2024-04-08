@@ -14,6 +14,7 @@ import TextLeftComponent from "../../../Components/Common/TextLeftComponent/text
 import HomeViewDonations from "../../../Components/Common/HomeViewDonations/homeViewDonation";
 import TextCenterQuote from "../../../Components/Common/TextCenterQuote/textCenterQuote";
 import UserFooter from "../../../Components/Common/UserFooter/userFooter";
+import CarouselFadeExample from "../../../Components/Common/homeCarousels/carousels";
 import { useEffect } from "react";
 const OrphanageHome = () => {
   useEffect(() => {
@@ -31,6 +32,7 @@ const OrphanageHome = () => {
   return (
     <div>
       <OrphanageNavbar />
+      <CarouselFadeExample />
       <CommunityHeader imgPath={leafHederImg} />
       <TextCenterComponent
         heading={contributeHeading}

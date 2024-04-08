@@ -10,6 +10,7 @@ import HomeViewDonations from "../../../Components/Common/HomeViewDonations/home
 import UserFooter from "../../../Components/Common/UserFooter/userFooter";
 import TextCenterQuote from "../../../Components/Common/TextCenterQuote/textCenterQuote";
 import ambulanceImg from "../../../Assets/Images/ambulance-img.png";
+import CarouselFadeExample from "../../../Components/Common/homeCarousels/carousels";
 import { useEffect } from "react";
 const UserHome = () => {
   useEffect(() => {
@@ -30,6 +31,7 @@ const UserHome = () => {
   return (
     <>
       <UserNavbar />
+      <CarouselFadeExample />
       <CommunityHeader />
       <TextCenterComponent
         heading={contributeHeading}

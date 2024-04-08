@@ -6,6 +6,7 @@ import AuthContext from "../../../Context/authContext";
 import { CgProfile } from "react-icons/cg";
 import LoginModal from "../../Common/LoginModal/loginModal";
 import BASE_URL from "../../../api/Backend-url";
+import ccLogo from "../../../Assets/Images/cc-logo.jpg";
 import "./orphanageNavbar.css";
 const OrphanageNavbar = () => {
   const { logoutUserContext, userContext, loginUserContext } =
@@ -91,12 +92,15 @@ const OrphanageNavbar = () => {
     <>
       <Container fluid className="user-navbar-container">
         <div
-          className="user-navbar-left"
-          onClick={() => {
-            navigate("/orphanage");
-          }}
+          className="user-navbar-left d-flex justify-content-start align-items-center"
+          onClick={navigateHome}
         >
-          <p style={{ cursor: "pointer" }} onClick={navigateHome}>
+          <img
+            src={ccLogo}
+            alt="cc-logo"
+            style={{ width: "50px", borderRadius: "50%" }}
+          />
+          <p className="ml-4" style={{ cursor: "pointer" }}>
             {" "}
             COMMUNITY CONNECT
           </p>
@@ -122,10 +126,7 @@ const OrphanageNavbar = () => {
             View
           </button>
         </div>
-        <div
-          
-          className="user-navbar-right"
-        >
+        <div className="user-navbar-right">
           {userContext?.userType ? (
             <div>
               {orpProfilePic ? (
