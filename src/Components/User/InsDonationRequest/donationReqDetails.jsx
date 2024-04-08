@@ -7,13 +7,13 @@ import CommunityHeader from "../../Common/CommunityHeader/CommunityHeader";
 import userLandingAfterLogin from "../../../Assets/Images/user-landing-after-login.png";
 import axiosInstance from "../../../api/BaseUrl";
 import child4Img from "../../../Assets/Images/child-3.png";
-import PaymentVerticalModal from "../../Common/PaymentVerticalModal/paymentVerticalModal";
+import InsPaymentVerticalModal from "../../Common/InsPaymentVerticalModal/paymentVerticalModal";
 import "./userDonationRequest.css";
 import "./donationReqDetails.css";
 import PaymentReceipt from "./paymentReceipt";
 import BASE_URL from "../../../api/Backend-url";
 
-const DonationReqDetails = () => {
+const InsDonationReqDetails = () => {
   const [donationReqData, setDonationReqData] = useState(null);
   const [donationReqStatus, setDonationReqStatus] = useState("Active");
   const [paymentModal, setPaymentModal] = useState(false);
@@ -21,10 +21,11 @@ const DonationReqDetails = () => {
   const [receipt, setReceipt] = useState(false);
   const [loading, setLoading] = useState(true);
   const [deadlineDate, setDeadlineData] = useState(null);
+  console.log('don', donationReqData)
 
   useEffect(() => {
     if (donationReqData) {
-      let filename = donationReqData?.orphanageId?.img?.filename || null;
+      let filename = donationReqData?.insId?.img?.filename || null;
       if (filename) {
         setDisplayPicture(BASE_URL + filename);
       }
@@ -76,7 +77,7 @@ const DonationReqDetails = () => {
   const getDonationReqData = async () => {
     try {
       const res = await axiosInstance.get(
-        "donation-request/get-donation-request/" + id
+        "ins-donation-request/get-donation-request/" + id
       );
       const data = res?.data?.data || null;
 
@@ -94,7 +95,7 @@ const DonationReqDetails = () => {
 
   return (
     <Container fluid className="p-0">
-      <PaymentVerticalModal
+      <InsPaymentVerticalModal
         show={paymentModal}
         onHide={() => setPaymentModal(false)}
       />
@@ -119,7 +120,7 @@ const DonationReqDetails = () => {
               <Container fluid>
                 <h2 className="font-weight-bold">
                   {" "}
-                  Orphanage Name: {donationReqData?.orphanageId?.name}{" "}
+                  Institute Name: {donationReqData?.insId?.name}{" "}
                 </h2>
                 <h4 className="font-italic ">
                   {" "}
@@ -178,31 +179,31 @@ const DonationReqDetails = () => {
                   <Col> Last Date: {deadlineDate || "10/10/2024"}</Col>
                 </Row>
                 <h2 className="lead mt-4 text-dark   font-weight-bold">
-                  Orphanage Details
+                  Institute Details
                 </h2>
                 <Row>
                   <Col>
                     {" "}
-                    Phone Number: {donationReqData?.orphanageId?.phoneNumber}
+                    Phone Number: {donationReqData?.insId?.phoneNumber}
                   </Col>
-                  <Col> Email Id:{donationReqData?.orphanageId?.email} </Col>
+                  <Col> Email Id:{donationReqData?.insId?.email} </Col>
                 </Row>
                 <Row>
                   <Col>
                     {" "}
-                    Orphanage Address: {donationReqData?.orphanageId?.address}
+                    Orphanage Address: {donationReqData?.insId?.address}
                   </Col>
                   <Col>
                     {" "}
-                    Orphanage City: {donationReqData?.orphanageId?.city}
+                    Orphanage City: {donationReqData?.insId?.city}
                   </Col>
                 </Row>
                 <Row>
                   <Col>
                     {" "}
-                    Orphanage City: {donationReqData?.orphanageId?.city}{" "}
+                    Orphanage City: {donationReqData?.insId?.city}{" "}
                   </Col>
-                  <Col> Pincode: {donationReqData?.orphanageId?.pincode}</Col>
+                  <Col> Pincode: {donationReqData?.insId?.pincode}</Col>
                 </Row>
                 <Row>
                   <Col>
@@ -239,4 +240,4 @@ const DonationReqDetails = () => {
     </Container>
   );
 };
-export default DonationReqDetails;
+export default InsDonationReqDetails;

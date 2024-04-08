@@ -30,6 +30,7 @@ import InsRequestForm from "./Components/Institutes/InstituteRequestForm/institu
 import InsCreateDonationRequest from "./Pages/institutes/CreateDonationRequest/createDonationRequest";
 import InsViewRequests from "./Pages/institutes/ViewRequests/viewRequests";
 import ViewInsDonationRequest from "./Components/User/InsDonationRequest/insDonationRequest";
+import InsDonationReqDetails from "./Components/User/InsDonationRequest/donationReqDetails";
 function App() {
   return (
     <BrowserRouter basename="community_connect_tvm">
@@ -59,7 +60,7 @@ function App() {
         />
         <Route
           path="/user/institute/request/:id"
-          element={<DonationReqDetails />}
+          element={<InsDonationReqDetails />}
         />
         <Route
           path="/user/leaderboard"

@@ -1,7 +1,7 @@
 .profile-container {
   background-color: #c4bcff;
   max-width: 100%;
-  height: 600px;
+  height: 1000px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +9,8 @@
     top: 37px;
 }
 .profile-info-container {
-  height: 85%;
+  /* height: 85%; */
+  min-height: 700px;
   width: 80%;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   background-color: #eff0ff;

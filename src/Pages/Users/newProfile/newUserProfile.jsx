@@ -42,6 +42,9 @@ const NewUserProfile = ({ activeUser }) => {
     if (localStorage.getItem("lastDonation")) {
       localStorage.removeItem("lastDonation");
     }
+    if (localStorage.getItem("institute-data")) {
+      localStorage.removeItem("institute-data");
+    }
 
     logoutUserContext();
     navigate("/user/login");
