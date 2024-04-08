@@ -10,36 +10,36 @@ import "./signupForm.css";
 const UserSignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const [userData, setUserData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    gender: "",
-    age: "",
-    phoneNumber: "",
-    street: "",
-    city: "",
-    state: "Kerala",
-    nationality: "India",
-    pincode: "",
-    img: null,
-  });
   // const [userData, setUserData] = useState({
-  //   firstName: "abraham",
-  //   lastName: "kureshi",
-  //   email: "ak@gmail.com",
-  //   password: "12341234",
-  //   gender: "male",
-  //   age: "3",
-  //   phoneNumber: "1234123412",
-  //   street: "stre",
-  //   city: "ct",
+  //   firstName: "",
+  //   lastName: "",
+  //   email: "",
+  //   password: "",
+  //   gender: "",
+  //   age: "",
+  //   phoneNumber: "",
+  //   street: "",
+  //   city: "",
   //   state: "Kerala",
   //   nationality: "India",
   //   pincode: "",
   //   img: null,
   // });
+  const [userData, setUserData] = useState({
+    firstName: "abraham",
+    lastName: "kureshi",
+    email: "ak@gmail.com",
+    password: "12341234",
+    gender: "male",
+    age: "",
+    phoneNumber: "1234123412",
+    street: "stre",
+    city: "ct",
+    state: "Kerala",
+    nationality: "India",
+    pincode: "",
+    img: null,
+  });
   const [validated, setValidated] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   let tvmPincodes = [
@@ -128,6 +128,10 @@ const UserSignupForm = () => {
       console.log("Please fill all the fields");
       return;
     } else {
+      if (userData.age < 18) {
+        alert("Sorry, User's age must be 18 or above");
+        return;
+      }
       if (userData.phoneNumber.length !== 10) {
         console.log("Phone number must be 10 digits");
         return;
