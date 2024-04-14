@@ -33,7 +33,7 @@ import ViewInsDonationRequest from "./Components/User/InsDonationRequest/insDona
 import InsDonationReqDetails from "./Components/User/InsDonationRequest/donationReqDetails";
 function App() {
   return (
-    <BrowserRouter basename="community_connect_tvm">
+    <BrowserRouter basename="community_connect">
       <Routes>
         {/* user  */}
         <Route path="/" element={<UserHome />} />

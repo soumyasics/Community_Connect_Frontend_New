@@ -1,13 +1,13 @@
 import axios from "axios";
 
 // const axiosMultipartInstance = axios.create({
-//   baseURL: "http://hybrid.srishticampus.in/community_connect_tvm_api/" || "http://localhost:5000/",
+//   baseURL: "http://hybrid.srishticampus.in/community_connect_api/", 
 //   headers: {
 //     "Content-Type": "multipart/form-data",
 //   },
 // });
 const axiosMultipartInstance = axios.create({
-  baseURL:  "http://localhost:5000/",
+  baseURL:  "http://localhost:4014/community_connect_api/",
   headers: {
     "Content-Type": "multipart/form-data",
   },

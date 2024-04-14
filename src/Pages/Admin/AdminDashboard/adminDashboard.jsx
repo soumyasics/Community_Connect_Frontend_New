@@ -13,6 +13,7 @@ import AdminDonationRequests from "../../../Components/Admin/AdminDonationReques
 import AdminCamp from "../../../Components/Admin/AdminCamp/adminCamp";
 import AdminLeaderboard from "../../../Components/Admin/AdminLeaderboard/adminLeaderboard"
 import "./adminDashboard.css";
+import AdminIns from "../../../Components/Admin/AdminIns/adminIns";
 
 const AdminDashboard = () => {
   const [activePage, setActivePage] = useState("overview");
@@ -33,6 +34,7 @@ const AdminDashboard = () => {
           {activePage === "overview" && <AdminOverview />}
           {activePage === "users" && <AdminUsers />}
           {activePage === "orphanages" && <AdminOrp />}
+          {activePage === "institutes" && <AdminIns />}
           {activePage === "organizations" && <AdminOrg />}
           {activePage === "donation-requests" && <AdminDonationRequests  />}
           {activePage === "donations" && <AdminDonations />}

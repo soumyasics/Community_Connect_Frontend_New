@@ -92,10 +92,7 @@ const OrganizationSignupForm = () => {
         console.log("Invalid CIN", orgData.license);
         return;
       }
-      if (!validatePincode(orgData.pincode)) {
-        alert("Please provide a valid pincode (Trivandrum only)");
-        return;
-      }
+   
       sendDataToServer(orgData);
     }
   };

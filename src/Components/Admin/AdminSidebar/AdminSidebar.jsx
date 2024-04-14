@@ -48,6 +48,13 @@ const AdminSidebar = ({ activePage, changeActivePage }) => {
         </div>
         <div
           className="admin-sidebar-link"
+          onClick={() => changeActivePage("institutes")}
+        >
+          <FcHome />
+          <h5>Institutes</h5>
+        </div>
+        <div
+          className="admin-sidebar-link"
           onClick={() => changeActivePage("orphanages")}
         >
           <FcHome />
