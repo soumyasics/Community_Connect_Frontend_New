@@ -31,7 +31,7 @@ const DonationCardContainer = ({ allAcceptedReqs, title, isPending }) => {
                   <br />
                   <span className="text-secondary">
                     <small className="font-italic">
-                      ({req.instId?.name.slice(0, 25) || "Orphnage"})
+                      {/* ({req.instId?.name.slice(0, 25) || "Donate"}) */}
                     </small>
                   </span>
                 </Card.Title>

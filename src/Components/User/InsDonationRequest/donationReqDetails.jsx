@@ -231,7 +231,7 @@ const InsDonationReqDetails = () => {
               </Container>
             </Container>
             <div className="single-orp-img-container w-50">
-              <img src={displayPicture} alt="orphanage" />
+              <img src={displayPicture} alt="..." />
             </div>
           </div>
         </Container>

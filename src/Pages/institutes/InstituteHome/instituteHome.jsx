@@ -16,12 +16,14 @@ import TextCenterQuote from "../../../Components/Common/TextCenterQuote/textCent
 import UserFooter from "../../../Components/Common/UserFooter/userFooter";
 import { useEffect } from "react";
 import InstituteNavbar from "../../../Components/Institutes/InstitutesNavbar/instituteNavbar";
+import CarouselFadeExample from "../../../Components/Common/insHomeCarousels/carousels";
+import InstituteGirlImg from "../../../Assets/Images/ins-student-smile.jpg";
 const InstituteHome = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const contributeHeading = "Making a Meaningful Impact";
-  const contributeContent = `Charity is a powerful force that brings positive change to both individual     By engaging in acts of kindness and generosity, we not only uplift those in need but also contribute to building a more compassionate and harmonious society. `;
+  const contributeHeading = "Empowering Futures";
+  const contributeContent = `Unlock Potential, Educate Minds, Shape Tomorrow's Leaders. By investing in education, we empower individuals to reach their full potential, fostering a brighter and more promising future for all.`;
 
   const btnContent = null;
   const childContentHeading = "Nurturing Dreams, Inspiring Futures";
@@ -32,6 +34,7 @@ const InstituteHome = () => {
   return (
     <div>
       <InstituteNavbar />
+      <CarouselFadeExample />
 
       <CommunityHeader imgPath={leafHederImg} />
       <TextCenterComponent
@@ -47,7 +50,7 @@ const InstituteHome = () => {
       />
 
       <TextLeftComponent
-        imgPath={orphanageImg2}
+        imgPath={InstituteGirlImg}
         content={communityContent}
         heading={communityContentHeading}
         buttonContent={btnContent}

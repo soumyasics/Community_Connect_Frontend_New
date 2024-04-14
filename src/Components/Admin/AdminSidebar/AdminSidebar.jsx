@@ -12,8 +12,9 @@ import { FcPlus } from "react-icons/fc";
 import { FcImport } from "react-icons/fc";
 import { LuLogOut } from "react-icons/lu";
 import { FcDepartment } from "react-icons/fc";
-import "./AdminSidebar.css";
 import { useNavigate } from "react-router-dom";
+import { FaSchool } from "react-icons/fa6";
+import "./AdminSidebar.css";
 const AdminSidebar = ({ activePage, changeActivePage }) => {
   const navigate = useNavigate();
   function handleLogout() {
@@ -50,7 +51,7 @@ const AdminSidebar = ({ activePage, changeActivePage }) => {
           className="admin-sidebar-link"
           onClick={() => changeActivePage("institutes")}
         >
-          <FcHome />
+          <FaSchool />
           <h5>Institutes</h5>
         </div>
         <div

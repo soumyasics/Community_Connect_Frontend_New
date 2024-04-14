@@ -110,6 +110,8 @@ const InsRequestForm = ({ insData }) => {
     }
   };
   return (
+    <>
+      <h1 className="text-center mt-5">Create Donation Request</h1>
     <div className="w-50  mx-auto bg-gray mb-5 pb-5 orp-req-box rounded">
       <Form
         className="mx-auto"
@@ -270,6 +272,7 @@ const InsRequestForm = ({ insData }) => {
         </div>
       </Form>
     </div>
+    </>
   );
 };
 export default InsRequestForm;
