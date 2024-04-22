@@ -44,28 +44,8 @@ function App() {
           element={<UserOrphanagesList activeUser="user" />}
         />
         <Route path="/user/institute-list" element={<UserInstitutesList />} />
-        <Route path="/user/orphanage/:id" element={<OrphanageDetails />} />
-
-        <Route
-          path="/user/orphanage/request"
-          element={<UserDonationRequest />}
-        />
-        <Route
-          path="/user/orphanage/request/:id"
-          element={<DonationReqDetails />}
-        />
-        <Route
-          path="/user/institute/request"
-          element={<ViewInsDonationRequest />}
-        />
-        <Route
-          path="/user/institute/request/:id"
-          element={<InsDonationReqDetails />}
-        />
-        <Route
-          path="/user/leaderboard"
-          element={<LeaderBoard activeUser="user" />}
-        />
+       
+       
         <Route
           path="/user/profile"
           element={<NewUserProfile activeUser="user" />}
@@ -79,35 +59,16 @@ function App() {
           element={<OrphangeProfile activeUser="orphanage" />}
         />
 
-        <Route path="/blood-camp" element={<BloodCamp />} />
-        <Route path="/view-blood-camps" element={<ViewBloodCamps />} />
-        <Route path="/orphanage/orphanage/:id" element={<OrphanageDetails />} />
-        {/* organizations  */}
+
 
         {/* institute routes  */}
 
         <Route path="/institute" element={<InstituteHome />} />
-        <Route path="/institute/profile" element={<InstituteProfile />} />
-        <Route
-          path="/institute/donation-request"
-          element={<InsCreateDonationRequest />}
-        />
-        <Route path="/institute/view-requests" element={<InsViewRequests />} />
 
         {/* orphnaage routes  */}
         <Route path="/orphanage" element={<OrphanageHome />} />
 
-        <Route
-          path="/orphanage/orphanages-list"
-          element={<UserOrphanagesList activeUser="orphanage" />}
-        />
 
-        <Route
-          path="/orphanage/donation-request"
-          element={<CreateDonationRequest />}
-        />
-
-        <Route path="/orphanage/view-requests" element={<ViewRequests />} />
         <Route
           path="/orphanage/leaderboard"
           element={<LeaderBoard activeUser="orphanage" />}
