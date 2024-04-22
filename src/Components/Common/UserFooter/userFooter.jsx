@@ -8,22 +8,32 @@ import {
   AiFillGoogleCircle,
 } from "react-icons/ai";
 import "./userFooter.css";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const iconStyle = {
     fontSize: "25px",
   };
+  const navigate = useNavigate();
 
   return (
     <div className="my-footer">
       <div>
         <Stack>
-          <h4 className="footer-logo"> Community Connect </h4>
-          <InputGroup style={{width: "240px"}} className="footer-mail">
+          <h4
+            className="footer-logo"
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            {" "}
+            Community Connect{" "}
+          </h4>
+          <InputGroup style={{ width: "240px" }} className="footer-mail">
             <InputGroup.Text>
               <AiOutlineMail />
             </InputGroup.Text>
-            <Form.Control  type="text" placeholder="Enter Your Email" />
+            <Form.Control type="text" placeholder="Enter Your Email" />
           </InputGroup>
           <div className="socialmedia-icons">
             <FaSquareInstagram style={iconStyle} />
@@ -34,25 +44,30 @@ const Footer = () => {
         </Stack>
 
         <Stack className="my-stack">
-          <p>Links</p>
-          <p>Home</p>
-          <p>Support</p>
-          <p>About </p>
+          <p> Page Links</p>
+          <p
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            Home
+          </p>
+          <p onClick={() => navigate("/user/leaderboard")}>Leaderboard</p>
+          <p onClick={() => navigate("/terms")}>Legal terms</p>
         </Stack>
 
         <>
           <Stack className="my-stack">
-            <p>Services</p>
-            <p>Insurance</p>
-            <p>Legal</p>
-            <p>Site Map</p>
+            <p>Get started</p>
+
+            <p onClick={() => navigate("/user/signup")}>Sign Up</p>
+            <p onClick={() => navigate("/user/login")}>Login </p>
           </Stack>
 
           <Stack className="my-stack">
             <p>About </p>
-            <p>Accessability</p>
-            <p>Enviornment</p>
-            <p>Branches</p>
+            <p onClick={() => navigate("/institute")}>Institute</p>
+            <p onClick={() => navigate("/orphanage")}>Orphanage</p>
           </Stack>
 
           <Stack className="my-stack">
