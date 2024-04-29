@@ -18,7 +18,7 @@ const DonationCardContainer = ({ allAcceptedReqs, title, isPending }) => {
               onClick={() => {
                 navigate(req._id);
               }}
-              style={{ width: "18rem", cursor: "pointer" }}
+              style={{ height: "400px", width: "18rem", cursor: "pointer" }}
             >
               <Card.Img
                 className="hover-overlay hover-zoom hover-shadow"
@@ -42,9 +42,19 @@ const DonationCardContainer = ({ allAcceptedReqs, title, isPending }) => {
                 {/* stop btn propagation here  */}
                 <div className="d-flex align-items-center justify-content-center">
                   {isPending ? (
-                    <Button variant="success mx-auto">Donate</Button>
+                    <Button
+                      style={{ position: "absolute", bottom: "20px" }}
+                      variant="success mx-auto"
+                    >
+                      Donate
+                    </Button>
                   ) : (
-                    <Button variant="primary mx-auto">View</Button>
+                    <Button
+                      style={{ position: "absolute", bottom: "20px" }}
+                      variant="primary mx-auto"
+                    >
+                      View
+                    </Button>
                   )}
                 </div>
               </Card.Body>
