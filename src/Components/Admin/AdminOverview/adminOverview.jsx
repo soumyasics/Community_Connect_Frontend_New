@@ -9,11 +9,12 @@ const AdminOverview = () => {
   const [usersData, setUsersData] = useState([]);
   const [orgData, setOrgData] = useState([]);
   const [orpData, setOrpData] = useState([]);
+  const [insData, setInsData] = useState([]);
 
-  const [allUsersDataLength, setAllUsersDataLength] = useState([0, 0, 0]);
+  const [allUsersDataLength, setAllUsersDataLength] = useState([0, 0, 0, 0]);
   const [donationReqCount, setDonationReqCount] = useState([0, 0]); // [pending, fullfilled]
   const [dataSet, setDataSet] = useState({
-    labels: ["Users", "Orphanages", "Organizations"],
+    labels: ["Users", "Orphanages", "Organizations", "Institutes"],
     datasets: [
       {
         label: "Total Users",
@@ -21,7 +22,7 @@ const AdminOverview = () => {
       },
     ],
     hoverOffset: 3,
-    backgroundColor: ["red", "green", "blue"],
+    backgroundColor: ["red", "green", "blue", "yellow"],
   });
   const [donationDataSet, setDonationDataSet] = useState({
     labels: ["pending", "fullfilled"],
@@ -39,21 +40,22 @@ const AdminOverview = () => {
     getAllOrp();
     getAllOrg();
     getDonationReq();
+    getAllIns();
   }, []);
 
   useEffect(() => {
-    setAllUsersDataLength([usersData.length, orpData.length, orgData.length]);
-  }, [usersData, orgData, orpData]);
+    setAllUsersDataLength([usersData.length, orpData.length, orgData.length, insData.length]);
+  }, [usersData, orgData, orpData, insData]);
 
   // updating chart when alluserdata length change
   useEffect(() => {
     setDataSet({
-      labels: ["Users", "Orphanages", "Organizations"],
+      labels: ["Users", "Orphanages", "Organizations", "Institutes"],
       datasets: [
         {
           label: "Total Users",
           data: allUsersDataLength,
-          backgroundColor: ["#6366f1", "#f79009", "#10b981"],
+          backgroundColor: ["#6366f1", "#f79009", "#10b981", "#FF0000"],
           borderColor: "black",
           borderWidth: 2,
         },
@@ -147,6 +149,18 @@ const AdminOverview = () => {
       console.log("error on get all org", error?.message);
     }
   };
+  const getAllIns = async () => {
+    try {
+      const res = await axiosInstance.get("institute/get-all-institutions");
+      const allIns = res?.data?.data;
+      if (allIns.length > 0) {
+        setInsData(allIns);
+      }
+    } catch (error) {
+      console.log("error on get all ins", error?.message);
+    }
+  };
+  
   return (
     <>
       <h1 className="ml-4"> Admin overview</h1>
