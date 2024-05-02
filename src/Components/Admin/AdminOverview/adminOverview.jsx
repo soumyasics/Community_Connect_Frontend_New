@@ -22,7 +22,7 @@ const AdminOverview = () => {
       },
     ],
     hoverOffset: 3,
-    backgroundColor: ["red", "green", "blue", "yellow"],
+    backgroundColor: ["#6366f1", "#f79009", "#10b981", "#FF0000"]
   });
   const [donationDataSet, setDonationDataSet] = useState({
     labels: ["pending", "fullfilled"],
@@ -86,7 +86,7 @@ const AdminOverview = () => {
   }
   function totalUsers() {
     return (
-      allUsersDataLength[0] + allUsersDataLength[1] + allUsersDataLength[2]
+      allUsersDataLength[0] + allUsersDataLength[1] + allUsersDataLength[2] + allUsersDataLength[3]
     );
   }
   const getDonationReq = async () => {

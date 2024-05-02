@@ -75,6 +75,7 @@ const InsViewRequests = () => {
               </thead>
               <tbody>
                 {allReqs.map((req) => {
+                  console.log("reqq", req)
                   return (
                     <tr>
                       <td>{req.title}</td>
